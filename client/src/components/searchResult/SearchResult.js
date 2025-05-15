@@ -29,7 +29,7 @@ const questionURLs = [
 const SearchResult = ({ data, delay }) => {
   const { setPost, dark } = useContext(UserContext);
   const platformRef = useRef(null);
-  const titleRef = useRef(null);
+  //const titleRef = useRef(null);
   const urlRef = useRef(null);
   const tagsRef = useRef(null);
   const descRef = useRef(null);
@@ -39,9 +39,9 @@ const SearchResult = ({ data, delay }) => {
     // platform
     platformRef.current.src = platformURLs[data.platform];
     // title
-    titleRef.current.innerHTML = `${
-      data.title || data.platform + "'s Question"
-    }<sup> (${data.rating})</sup>`;
+    // titleRef.current.innerHTML = `${
+    //   data.title || data.platform + "'s Question"
+    // }<sup> (${data.rating})</sup>`;
     // url
     urlRef.current.innerHTML = data.url;
     urlRef.current.href = data.url;
@@ -82,30 +82,42 @@ const SearchResult = ({ data, delay }) => {
 
   return (
     <div
-      className={`searchResult ${dark ? "searchResult__dark" : ""}`}
-      style={{ animationDelay: delay + "s" }}
+    className={`searchResult ${dark ? "searchResult__dark" : ""}`}
+    style={{ animationDelay: delay + "s" }}
+  >
+    <img className="searchResult__platform" ref={platformRef} src="" alt="" />
+    
+    <a
+      className="searchResult__title"
+      href={data.url}
+      target="_blank"
+      rel="noopener noreferrer"
     >
-      <img className="searchResult__platform" ref={platformRef} src="" alt="" />
-      <p className="searchResult__title" ref={titleRef}></p>
-      <a target="_blank" className="searchResult__link" ref={urlRef}></a>
-      <div className="searchResult__tags" ref={tagsRef}></div>
-      <p className="searchResult__description">
+      {data.title || `${data.platform}'s Question`}
+      <sup> ({data.rating})</sup>
+    </a>
+
+    <a target="_blank" className="searchResult__link" ref={urlRef}></a>
+    <div className="searchResult__tags" ref={tagsRef}></div>
+    
+    <p className="searchResult__description">
       <span ref={descRef}></span>
-        <span
-          className="searchResult__link"
-          onClick={() =>
-            setPost({
-              ...data,
-              isQuestion: true,
-              fileURLs: shuffle(questionURLs),
-            })
-          }
-        >
-          {data.description?.length > 500 ? " Read More" : " >> Explore"}
-        </span>
-      </p>
-      <a target="_blank" className="searchResult__host" ref={hostRef}></a>
-    </div>
+      <span
+        className="searchResult__link"
+        onClick={() =>
+          setPost({
+            ...data,
+            isQuestion: true,
+            fileURLs: shuffle(questionURLs),
+          })
+        }
+      >
+        {data.description?.length > 500 ? " Read More" : " >> Explore"}
+      </span>
+    </p>
+    
+    <a target="_blank" className="searchResult__host" ref={hostRef}></a>
+  </div>
   );
 };
 

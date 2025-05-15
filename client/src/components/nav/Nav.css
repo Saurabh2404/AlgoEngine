@@ -34,7 +34,7 @@ body {
   font-size: 30px;
 }
 
-.nav {
+/* .nav {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -44,7 +44,21 @@ body {
   background: linear-gradient(to right, black, #002b57);
   background-size: 200% 200%;
   animation: nav__bg 5s ease-in-out infinite;
+} */
+
+.nav {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  padding: 0 15px;
+  background: linear-gradient(to right, #d8b00d, #d58d11); /* light yellow with warm reddish-orange hue */
+  background-size: 200% 200%;
+  animation: nav__bg 5s ease-in-out infinite;
+  box-shadow: 0 4px 10px rgba(200, 80, 80, 0.2); /* subtle reddish shadow effect */
 }
+
 
 .nav__bg {
   position: absolute;
