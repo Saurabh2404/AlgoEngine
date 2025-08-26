@@ -10,15 +10,10 @@ import {
   ABOUT_ART_3_PNG,
   ABOUT_ART_4_PNG,
 } from "../../constants/images";
-// mui
-import { Button, TextareaAutosize, TextField } from "@mui/material";
-import SaveRoundedIcon from "@mui/icons-material/SaveRounded";
-import ClearRoundedIcon from "@mui/icons-material/ClearRounded";
 // data
 import data from "./data.json";
 
 const About = () => {
-  const formRef = useRef(null);
   const textRef1 = useRef(null);
   const textRef2 = useRef(null);
   const textRef3 = useRef(null);
@@ -26,20 +21,18 @@ const About = () => {
   const { dark } = useContext(UserContext);
 
   useEffect(() => {
-    let i = 0;
-    clearInterval(typeInterval.current);
-    typeInterval.current = setInterval(() => {
-      i = (i + 1) % data[0].length;
-      if (textRef1.current) textRef1.current.innerText = data[0][i];
-      if (textRef2.current) textRef2.current.innerText = data[1][i];
-      if (textRef3.current) textRef3.current.innerText = data[2][i];
-    }, 7500);
-    window.scrollTo(0, 0);
-  }, []);
+  const minLength = Math.min(data[0].length, data[1].length, data[2].length);
+  let i = 0;
+  clearInterval(typeInterval.current);
+  typeInterval.current = setInterval(() => {
+    i = (i + 1) % minLength;
+    if (textRef1.current) textRef1.current.innerText = data[0][i];
+    if (textRef2.current) textRef2.current.innerText = data[1][i];
+    if (textRef3.current) textRef3.current.innerText = data[2][i];
+  }, 7500);
+  window.scrollTo(0, 0);
+}, []);
 
-  const handleContact = (e) => {
-    e.preventDefault();
-  };
 
   return (
     <div className={`about ${dark ? "about__dark" : ""}`}>
@@ -57,25 +50,23 @@ const About = () => {
         className="about__title"
         style={{ marginTop: "-50px", marginBottom: "20px" }}
       >
-        <h1>About Me</h1>
+        <h1>About Us</h1>
       </div>
       <p>
-        I am Divakar Kumar, a second year undergraduate student of the
-        department of Electrical Engineering enrolled in its Bachelor of
-        Technology Course of Intrumentation Engineering. I am a boarder of Azad
-        Hall of Residence. I am from Bhubaneswar, Odisha.
+        I am <strong>Saurabh Kumar</strong>, a final year undergraduate student pursuing{" "}
+        <strong>Information Technology</strong> at the{" "}
+        <strong>Army Institute of Technology, Pune</strong>. My academic journey has
+        been fueled by a strong passion for technology and innovation. With a robust
+        foundation in computer science and hands-on experience in various technical
+        domains, I aim to contribute effectively to the ever-evolving tech industry.
+        <br />
+        As part of my <strong>BE Project</strong>, I have developed this platform
+        along with my teammates <strong>Sumit Soni</strong>, <strong>Prince Kumar</strong>, and{" "}
+        <strong>Divakar Kumar Gupta</strong>, under the guidance of our project guide{" "}
+        <strong>Prof. Vaishali Sachin Ingale</strong>.
       </p>
-      <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five
-        centuries, but also the leap into electronic typesetting, remaining
-        essentially unchanged. It was popularised in the 1960s with the release
-        of Letraset sheets containing Lorem Ipsum passages, and more recently
-        with desktop publishing software like Aldus PageMaker including versions
-        of Lorem Ipsum.
-      </p>
+
+
       <div className="about__title" style={{ marginTop: "70px" }}>
         <h1>Skills & Experiences</h1>
       </div>
@@ -83,19 +74,13 @@ const About = () => {
         <div className="">
           <h1>Leadership</h1>
           <p>
-            Leadership comes in many forms and constructs, including
-            transformational leadership, servant leadership, and entrepreneurial
-            leadership, which helps to understand and define leadership itself.
+            Leadership, to me, is about inspiring and empowering those around you to achieve a common goal. 
+            It involves active listening, clear communication, and leading by example. 
+            I have held multiple leadership positions in college clubs and technical committees where I’ve had the opportunity 
+            to lead diverse teams, coordinate events, and mentor peers.
             <br />
-            Leadership can come naturally, but it’s not necessarily innate.
-            Leadership can be learned through leadership development programs,
-            where leadership skills are created, developed, and improved through
-            rigorous education and practice. Those skills can help demonstrate
-            why leadership is important.
-            <br /> Understanding entrepreneurial leadership and honing the
-            necessary leadership skills are important to becoming an
-            entrepreneurial leader, able to identify, address, and help solve
-            complex problems with empathy.
+            I strongly believe leadership is not a position but a responsibility, and I strive to bring positivity, collaboration, 
+            and a solution-oriented mindset to any team I am a part of.
           </p>
         </div>
         <img src={ABOUT_ART_4_PNG} alt="" />
@@ -163,72 +148,21 @@ const About = () => {
         <h1>Contact Me</h1>
       </div>
       <div className="about__contactContainer">
-        <iframe
-          title="about__map"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.0239927260523!2d87.308342413992!3d22.31493234800481!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1d440255555547%3A0x6f2f20dd0c0d6793!2sIndian%20Institute%20of%20Technology%20Pune!5e0!3m2!1sen!2sin!4v1651656930757!5m2!1sen!2sin"
-          width={window.innerWidth - 100}
-          frameBorder="0"
-          className="about__map"
-          allowFullScreen=""
-          aria-hidden="false"
-          tabIndex={0}
-        />
-        <form
-          ref={formRef}
-          className="about__contactForm"
-          onSubmit={(e) => handleContact(e)}
-        >
-          <div>
-            <TextField
-              variant="standard"
-              type="text"
-              label="First Name"
-              name="fname"
-            />
-            <TextField
-              variant="standard"
-              type="text"
-              label="Last Name"
-              name="lname"
-            />
-          </div>
-          <div>
-            <TextField
-              variant="standard"
-              type="email"
-              label="Email Address"
-              name="email"
-            />
-            <TextField
-              variant="standard"
-              type="number"
-              label="Phone Number"
-              name="contact"
-            />
-          </div>
-          <textarea placeholder="Type your message." />
-          <div
-            className="about__buttons about__contactBtns"
-            style={{ justifyContent: "center" }}
-          >
-            <Button
-              type="submit"
-              style={{ flex: 1, backgroundColor: "#0C6CFA", color: "white" }}
-            >
-              <SaveRoundedIcon />
-              Submit
-            </Button>
-            <Button
-              style={{ flex: 1, backgroundColor: "lightgray", color: "black" }}
-              onClick={() => formRef.current.reset()}
-            >
-              <ClearRoundedIcon />
-              Reset
-            </Button>
-          </div>
-        </form>
-      </div>
-    </div>
+  <iframe
+    title="about__map"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.269784054843!2d73.87251157335392!3d18.60693146653417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c70090000001%3A0x160a20f3d0273495!2sArmy%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1747382012690!5m2!1sen!2sin"
+    width={window.innerWidth - 100}
+    height="450"
+    style={{ border: 0 }}
+    allowFullScreen
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+    className="about__map"
+    aria-hidden="false"
+    tabIndex="0"
+  />
+</div>
+    </div> 
   );
 };
 

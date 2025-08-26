@@ -1,6 +1,7 @@
 .about {
   padding-top: 80px;
-  transition: all 0.5s;
+  transition: all 0.5s ease-in-out;
+  animation: fadeIn 1.5s ease-in;
 }
 
 .about__me {
@@ -21,26 +22,44 @@
 .about > p {
   font-size: 16px;
   margin: 0 50px;
+  color: #444;
+  line-height: 1.6;
 }
 
 .about__skill {
   display: flex;
   align-items: center;
   margin: 0 50px;
-  font-size: 20px;
   margin-bottom: 20px;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about__skill:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .about__skill h1 {
   color: #313131;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 30px;
   margin-top: 20px;
+  transition: color 0.3s ease;
+}
+
+.about__skill h1:hover {
+  color: #f94e3f;
 }
 
 .about__skill p {
   font-size: 16px;
   margin-top: 10px;
+  color: #333;
 }
 
 .about__skill > div {
@@ -51,6 +70,11 @@
   width: 100vw;
   max-width: 350px;
   object-fit: contain;
+  transition: transform 0.5s ease;
+}
+
+.about__skill > img:hover {
+  transform: scale(1.05);
 }
 
 .about__skillL {
@@ -58,17 +82,17 @@
 }
 
 .about__skillL > div {
-  padding: 0;
   padding-left: 50px;
-  flex-direction: row-reverse;
+  padding-right: 0;
 }
 
 .about__map {
   flex: 1;
   height: 300px;
   border: 0;
-  margin: 20px 0;
-  margin-left: 50px;
+  margin: 20px 0 20px 50px;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .about__typewriter {
@@ -83,14 +107,12 @@
 
 .about__typewriter h1 {
   color: white;
-  width: 0;
   font-size: 60px;
   font-weight: 500;
-  max-width: fit-content;
   font-family: "VT323", monospace;
   overflow: hidden;
-  border-right: 0.15em solid orange;
   white-space: nowrap;
+  border-right: 0.15em solid orange;
   animation: about__typing 7.5s steps(40, end) forwards,
     about__blink-caret 0.75s step-end infinite;
   animation-iteration-count: infinite;
@@ -103,32 +125,25 @@
   color: rgb(49, 49, 49);
   font-size: 40px;
   font-weight: 500;
-  width: fit-content;
   text-align: center;
-  margin-left: 50px;
-  white-space: nowrap;
+  margin: 50px 0 20px 50px;
   padding-bottom: 13px;
-  margin-top: -20px;
-  margin-top: 50px;
+  white-space: nowrap;
 }
-.about__title h1:before {
-  background-color: lightcoral;
-  content: "";
-  display: block;
-  height: 3px;
-  width: 40%;
-  margin-bottom: 5px;
-}
+
+.about__title h1:before,
 .about__title h1:after {
   background-color: lightcoral;
   content: "";
   display: block;
+  height: 3px;
+  width: 40%;
+}
+
+.about__title h1:after {
   position: absolute;
   right: 0;
   bottom: 0;
-  height: 3px;
-  width: 40%;
-  margin-bottom: 0.25em;
 }
 
 .about__contactForm {
@@ -151,27 +166,27 @@
 .about__contactForm textarea {
   border: 1.5px solid #949494;
   outline: none;
-  max-width: calc(100% - 40px);
-  min-width: calc(100% - 40px);
   margin: 10px 50px;
-  min-height: 100px;
-  font-family: "Roboto", cursive;
   padding: 10px;
   font-size: 16px;
-  transition: all 0.5s;
+  max-width: calc(100% - 40px);
+  min-width: calc(100% - 40px);
+  min-height: 100px;
+  font-family: "Roboto", cursive;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  transition: all 0.5s ease;
 }
 
 .about__contactForm textarea:focus {
   border-color: #0c6cfa;
-}
-
-.about__contactForm > div > .MuiTextField-root:nth-child(1) {
-  margin-right: 5px;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .about__contactBtns > .MuiButton-root:hover {
   filter: brightness(80%);
-  transform: translateY(0) !important;
+  transform: scale(1.05) !important;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .about__contactBtns > .MuiButton-root:nth-child(1) {
@@ -208,6 +223,43 @@
   color: black !important;
 }
 
+/* Animations */
+@keyframes about__typing {
+  0% {
+    width: 0;
+  }
+  45% {
+    width: 100%;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes about__blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
 @media only screen and (max-width: 900px) {
   .about__skill > div {
     padding: 0;
@@ -267,27 +319,3 @@
   }
 }
 
-@keyframes about__typing {
-  0% {
-    width: 0;
-  }
-  45% {
-    width: 100%;
-  }
-  50% {
-    width: 100%;
-  }
-  100% {
-    width: 0;
-  }
-}
-
-@keyframes about__blink-caret {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: orange;
-  }
-}

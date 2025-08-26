@@ -11,7 +11,7 @@
     "express": "^4.21.2",
     "handlebars": "^4.7.7",
     "javascript-lemmatizer": "0.0.2",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.2",
     "keyword-extractor": "0.0.21",
     "mongoose": "^6.3.1",
     "nodemailer": "^6.7.4",

@@ -73,13 +73,13 @@ const Home = () => {
           <PlayArrowRoundedIcon />
         </IconButton>
         <div className="home__welcome">
-          <h1>Welcome back, Programmer!</h1>
-          <p>Get started with a simple user authentication.</p>
-          <p>
-            AlgoEngine -  At
-            AlgoEngine, you get access to a powerful DSA search engine, tons of
-            news and many more. I hope you like it!
+          <h1 style={{ color: '#FFA500' }}>Welcome back, Programmer!</h1>
+          <p style={{ color: '#FFA500' }}>Get started with a simple user authentication.</p>
+          <p style={{ color: '#FFA500' }}>
+            AlgoEngine - At AlgoEngine, you get access to a powerful DSA search engine,
+            tons of news and many more. I hope you like it!
           </p>
+
           <div className="home__buttons">
             <Button onClick={() => window.scrollTo(0, window.innerHeight)}>
               <DirectionsRunIcon />
@@ -92,7 +92,7 @@ const Home = () => {
           </div>
         </div>
         <p className="home__copyright">
-          Divakar Kumar, AIT Pune © All Rights Reserved
+          Saurabh Kumar, AIT Pune © All Rights Reserved
         </p>
       </div>
       <MediaSlider mediaFiles={data} isBgFixed isCarousel />

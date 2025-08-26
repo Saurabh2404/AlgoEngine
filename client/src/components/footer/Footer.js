@@ -47,11 +47,11 @@ const Footer = () => {
                 <div className="footer__group">
                     <div className="footer__subSection" style={{ flex: 2 }}>
                         <h1>About</h1>
-                        <p> I am Divakar Kumar, a Fourth year undergraduate student of the department of Information Technology enrolled in its Bachelor of Technology Course. <br /><br /><br /><br />AlgoEngine - Your DSA Companion is created  At AlgoEngine, you get access to a powerful DSA search engine, tons of resources and many more. I hope you like it!</p>
+                        <p> I am Saurabh Kumar, a Fourth year undergraduate student of the department of Information Technology enrolled in its Bachelor of Technology Course. <br /><br /><br /><br />AlgoEngine - Your DSA Companion is created  At AlgoEngine, you get access to a powerful DSA search engine, tons of resources and many more. I hope you like it!</p>
                         <h1>Contact</h1>
                         <p className="footer__contact"><b>Address:</b> Army Institute of Technology Pune</p>
                         <p className="footer__contact"><b>Phone:</b> +91 9693793372</p>
-                        <a className="footer__contact" href="mailto:divakarkumar_21270@aitpune.edu.in"><b>Email:</b> divakarkumar_21270@aitpune.edu.in</a>
+                        <a className="footer__contact" href="mailto:saurabhkumar_21274@aitpune.edu.in"><b>Email:</b> saurabhkumar_21274@aitpune.edu.in</a>
                     </div>
                     <div className="footer__subSection">
                         <h1>Tags</h1>
@@ -109,7 +109,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <p className="footer__end">Divakar Kumar, AIT Pune © All Rights Reserved</p>
+            <p className="footer__end">Saurabh Kumar, AIT Pune © All Rights Reserved</p>
         </div>
     );
 };
